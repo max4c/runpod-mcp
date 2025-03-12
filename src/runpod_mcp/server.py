@@ -4,6 +4,7 @@ Main MCP server implementation for RunPod integration.
 
 import os
 import sys
+import logging
 import argparse
 from contextlib import asynccontextmanager
 from typing import AsyncIterator, Dict, Any, Optional
@@ -13,6 +14,7 @@ from mcp.server.fastmcp import FastMCP
 from .config import get_config, RunPodConfig
 from .client import RunPodClient
 from .logging_config import configure_logging, get_logger
+from .resources import register_all_resources
 
 logger = get_logger(__name__)
 
@@ -45,6 +47,7 @@ async def server_lifespan(server: FastMCP) -> AsyncIterator[Dict[str, Any]]:
 # Set the server lifespan
 mcp.lifespan = server_lifespan
 
+# Register basic server status resources
 @mcp.resource("status://version")
 def get_version() -> str:
     """Return the version of the RunPod MCP server."""
@@ -62,6 +65,9 @@ def get_config_status() -> str:
         )
     except Exception as e:
         return f"RunPod MCP Server configuration error: {e}"
+
+# Register all RunPod-specific resources
+register_all_resources(mcp)
 
 def parse_args():
     """Parse command-line arguments."""

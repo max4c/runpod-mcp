@@ -22,13 +22,13 @@
 - [x] Implement logging and error handling framework
 
 ## Phase 3: Resource Implementation
-- [ ] Define and implement resource types for RunPod entities:
-  - [ ] Pod configurations and templates
-  - [ ] GPU types and availability
-  - [ ] Serverless endpoints
-  - [ ] Network storage
-- [ ] Implement resource fetchers that retrieve and format RunPod resources (using RunPod SDK/API)
-- [ ] Create resource schemas that properly describe RunPod entities to LLMs
+- [x] Define and implement resource types for RunPod entities:
+  - [x] Pod configurations and templates
+  - [x] GPU types and availability
+  - [x] Serverless endpoints
+  - [x] Network storage
+- [x] Implement resource fetchers that retrieve and format RunPod resources (using RunPod SDK/API)
+- [x] Create resource schemas that properly describe RunPod entities to LLMs
 
 ## Phase 4: Tool Implementation
 - [ ] Implement pod management tools:
