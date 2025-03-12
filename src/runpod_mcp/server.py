@@ -90,6 +90,12 @@ def parse_args():
         "--log-file",
         help="Log file path (default: logs to stderr only)"
     )
+    parser.add_argument(
+        "--port",
+        type=int,
+        default=8001,  # Using 8001 to avoid conflict with other services
+        help="Port to run the server on (default: 8001)"
+    )
     return parser.parse_args()
 
 def main():
@@ -107,7 +113,7 @@ def main():
     configure_logging(level=log_level, log_file=args.log_file)
     
     # Run the server
-    mcp.run()
+    mcp.run(port=args.port)
 
 if __name__ == "__main__":
     main() 
